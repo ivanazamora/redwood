@@ -4,5 +4,4 @@ export const trips = [
   { tid: 3, tname: "Maynooth-Lucan", distance: 5, unit: "km" },
   { tid: 4, tname: "Home-Tesco", distance: 400, unit: "m" },
   { tid: 5, tname: "Tesco-GAA pitch", distance: 2.5, unit: "km" },
-  { tid: 6, tname: "MSU-Roost", distance: 4, unit: "km" }
 ];
