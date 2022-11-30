@@ -12,13 +12,21 @@ class TripHistory extends Component {
   constructor(props) {
     super(props);
   }
+  // Function to sort the trips by their CO2 savings.
+  compareCo2(a, b) {
+    if (a.co2 > b.co2) {
+      return -1;
+    } else {
+      return 1;
+    }
+  }
   render() {
     const tripHistoryList = this.props.tripHistoryList;
     // The table takes the data of the trips as input and maps it so that
     // it is displayed in the right column.
-    // Source for CO2 factor: https://www.nimblefins.co.uk/average-co2-emissions-car-uk
     return (
       <div>
+        <hr />
         <p> See the trip history: </p>
 
         <table>
@@ -30,19 +38,14 @@ class TripHistory extends Component {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>First trip</td>
-              <td>20 km</td>
-              <td>{20 * 138.4} g</td>
-            </tr>
-            {tripHistoryList.map((t) => (
+            {/** The trips get sorted by their CO2 savings before being mapped to table data. */}
+            {tripHistoryList.sort(this.compareCo2).map((t) => (
               <tr key={t.tid}>
                 <td>{t.tname}</td>
                 <td>
                   {t.distance} {t.unit}
                 </td>
-                {t.unit === "m" && <td>{(t.distance * 138.4) / 1000} g</td>}
-                {t.unit === "km" && <td>{t.distance * 138.4} g</td>}
+                <td>{t.co2} g</td>
               </tr>
             ))}
           </tbody>
