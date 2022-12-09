@@ -1,5 +1,8 @@
 import "./styles.css";
 import React, { Component } from "react";
+import { useState } from "react";
+import { db } from "./fbconfig";
+import { collection, addDoc } from "firebase/firestore";
 
 // Create a new component to display all the trips entered by a user.
 // It should display the names of the trip, the travelled distance,
