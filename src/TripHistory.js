@@ -13,13 +13,7 @@ class TripHistory extends Component {
     super(props);
   }
   // Function to sort the trips by their CO2 savings.
-  compareCo2(a, b) {
-    if (a.co2 > b.co2) {
-      return -1;
-    } else {
-      return 1;
-    }
-  }
+
   render() {
     const tripHistoryList = this.props.tripHistoryList;
     // The table takes the data of the trips as input and maps it so that
@@ -39,7 +33,7 @@ class TripHistory extends Component {
           </thead>
           <tbody>
             {/** The trips get sorted by their CO2 savings before being mapped to table data. */}
-            {tripHistoryList.sort(this.compareCo2).map((t) => (
+            {tripHistoryList.map((t) => (
               <tr key={t.tid}>
                 <td>{t.tname}</td>
                 <td>

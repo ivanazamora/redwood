@@ -2,10 +2,9 @@ import "./styles.css";
 import React, { Component } from "react";
 import TripHistory from "./TripHistory";
 import AddTrip from "./AddTrip";
-import SubmitTrip from "./SubmitTrip";
-import test from "./test";
 // Import from the made up trips.js to simulate the behaviour.
 import { trips } from "./trips";
+import leaderboard from "./leaderboard";
 
 class App extends Component {
   constructor(props) {
@@ -75,9 +74,9 @@ class App extends Component {
   // Function to change the state variable for the conditional rendering of the view.
   // When the button for the leaderboard is pressed. The variable is set to 1.
   changeViewToLeaderboard() {
-    if (this.state.leaderboardView === 1)
+    if (this.state.leaderboardView == 1)
       console.log(
-        "Leaderboard button was pressed althoug already on the view."
+        "Leaderboard button was pressed although already on the view."
       );
     else this.setState({ leaderboardView: 1 });
     console.log(this.state.leaderboardView);
@@ -85,9 +84,9 @@ class App extends Component {
   // Function to change the state variable for the conditional rendering of the view.
   // When the button for the personal trips is pressed. The variable is set to 0.
   changeViewToTrips() {
-    if (this.state.leaderboardView === 0)
+    if (this.state.leaderboardView == 0)
       console.log(
-        "Personal trips button was pressed althoug already on the view."
+        "Personal trips button was pressed although already on the view."
       );
     else this.setState({ leaderboardView: 0 });
     console.log(this.state.leaderboardView);
@@ -115,8 +114,11 @@ class App extends Component {
         {this.state.leaderboardView === 0 && (
           <TripHistory tripHistoryList={this.state.tripList} />
         )}
-
-        <test />
+       
+       {this.state.leaderboardView === 1 && (
+          <leaderboard tripLeaderList={this.state.tripList}/>
+        )}
+        
       </div>
     );
   }

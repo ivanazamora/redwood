@@ -1,8 +1,5 @@
 import "./styles.css";
 import React, { Component } from "react";
-import { useState } from "react";
-import { db } from "./fbconfig";
-import { collection, addDoc } from "firebase/firestore";
 
 // Create a new component to display all the trips entered by a user.
 // It should display the names of the trip, the travelled distance,
@@ -36,7 +33,7 @@ class AddTrip extends Component {
               value={nameDisplayProp}
               onChange={nameUpdateFun}
             />
-            {/* This input is for a positivie number as distance travelled. */}
+            {/* This input is for a positive number as distance travelled. */}
             <input
               type="number"
               placeholder="Distance in km"
